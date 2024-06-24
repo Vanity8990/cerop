@@ -1,0 +1,30 @@
+
+<td> {{resource.name}} </td>
+<td>
+    {{file-input file=file disabled=disabledFileInput onChange='submit'}}
+</td>
+
+<td>
+{{#if resource.status}}
+    <button class="btn btn-default" {{action 'reset'}}>reset</button>
+{{else if isLoading}}
+    <p>validation...</p>
+{{else}}
+    {{#if file}}
+        <button class="btn btn-primary" {{action 'submit'}}>validate</button>
+    {{/if}}
+    <button class="btn btn-default" {{action 'skip'}}>skip</button>
+{{/if}}
+</td>
+
+<td>
+{{#if resource.status}}
+    {{#if error}}
+    <div class="error">
+        <samp>{{error.message}}: {{{error.detail}}}</samp>
+    </div>
+    {{else}}
+        {{resource.status}}
+    {{/if}}
+{{/if}}
+</td>

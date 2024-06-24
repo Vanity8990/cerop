@@ -1,0 +1,162 @@
+Guide d'installation de CERoPath sur RedHat/CentOS 5
+====================================================
+Nicolas CLAIRON
+
+Ce guide décrit la procédure d'installation de CERoPath pour la version 5 i386 des systèmes d'exploitations Linux RedHat et CentOS. 
+
+Installation de MongoDB
+-----------------------
+
+ * Créer le fichier  /etc/yum.repos.d/mongodb.10gen.repo contenant les lignes suivantes::
+
+    [10gen]
+    name=10gen Repository
+    baseurl=http://downloads.mongodb.org/distros/centos/5.4/os/i386/
+    gpgcheck=0
+
+ * lancer l'installation de MongoDB::
+
+    # yum install mongo-stable
+    # yum install mongo-stable-server
+
+ * enfin démarrer le serveur::
+
+    # /etc/init.d/monod start
+    # chkconfig mongod on
+
+On peut vérifier que tout c'est bien passé en tapant le commande::
+
+    # mongod
+    MongoDB shell version: 1.4.4
+    url: test
+    connecting to: test
+    type "help" for help
+    > 
+
+et en affichant les log accessibles à /var/log/mongo/mongod.log
+
+
+Installation de CERoPath
+------------------------
+
+Téléchargement du projet
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Il y a deux solutions pour installer le projet CERoPath:
+
+ - récupérer les sources à partir d'une archive et la décompressé
+ - utiliser git pour cloner le repository sur github
+
+Téléchargement de l'archive
++++++++++++++++++++++++++++
+
+Se rendre à cette adresse http://github.com/namlook/ceropath et cliquer sur `Download source`.
+
+# TODO mettre image
+
+CERoPath nécessite un interpréteur Python et l'installation d'easy_install (paquet setup-tools).
+
+Extraire l'archive télécharger, la renommer en `ceropath` et se positionner dans ce dossier `cd ceropath`.
+
+A partir de maintenant on supposera que toutes les commandes seront lancées à partir de ce répertoire.
+
+Cloner le repository sur github
++++++++++++++++++++++++++++++++
+
+Installation de git sur RedHat 5::
+
+ # rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noarch.rpm
+ # yum install git
+ # git clone git://github.com/namlook/ceropath.git
+
+Installation des dépendances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour installer les dépendances taper la commande suivante::
+    
+    python setup.py develop
+
+Cela va télécharger et installer automatiquement les modules nécessaire au fonctionnement de CERoPath.
+
+#
+#UNe fois python et easy_install installés, on peut passer à l'installation des dépendances::
+#
+#    # easy_install Pylons
+#    # easy_install uuid (pas inclus par défaut dans python 2.4)
+#    # easy_install mongokit
+#    # easy_install pypit
+#    # easy_install markdown
+#    # easy_install statlib
+#
+## TODO voir si on doit utiliser ces dépendances:
+#    pyparing
+#    networkx
+#
+
+Configuration
+~~~~~~~~~~~~~
+
+Le fichier config.py
+++++++++++++++++++++
+
+Editer le fichier config.py et renseigner les lignes suivantes::
+
+    google_map_api_key = ""
+    username = ""
+    password = ""
+    admin_password = ""
+
+ * `google_map_api_key` est la clé d'API qui permet d'utiliser Google Map dans CERoPath. Il faut en générer une pour le nom de domaine sous lequel CERoPath sera installé (ici ceropath.org). Pour générer la clé API, c'est ici : http://code.google.com/apis/maps/signup.html.
+ * `username` est le nom d'utilisateur demandé lors de l'affichage de donnée protéger (en l'ocurrence la liste des individus).
+ * `password` est le mot de passe qui sera accepté pour le `username`
+ * `admin_password` est le mot de passe qui sera demandé lors de la configuration du Pipeline ou du chargement des données json.
+
+
+Deploiement
++++++++++++
+
+Générer le fichier production.ini avec la commande::
+    
+   # paster make-config ceropath production.ini
+
+puis::
+
+   # paster setup-app production.ini
+
+Lancer enfin::
+    
+    # paster serve production.ini
+
+
+Aller sur:
+
+    http://127.0.0.1:5000/rdbsea/species 
+
+ou
+
+    http://127.0.0.1:5000/rdbsea/pipeline
+
+
+Configuration du Pipeline
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installation des dépendances
+++++++++++++++++++++++++++++
+
+Le pipeline de CERoPath a besoin des binaires suivant:
+
+ * muscle : (lien vers le binaire : http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux32)
+ * dnadist : http://evolution.genetics.washington.edu/phylip/getme.html
+ * BIONJ : http://www.atgc-montpellier.fr/bionj/binaries.php
+ * R : installer R-core et R-devel.
+
+Muscle, dnadist et BIONJ sont fournit avec le projet mais en cas de problème de licence il faut aller chercher les binaires sur les sites correspondants.
+
+Le pipeline demande l'installation de deux packages R::
+
+    # R
+    > install.packages('ape')
+    > install.packages('RSVGTipsDevice')
+
+Puis éditer le fichier `bin/nwk2svg.r` et remplacer dans la première ligne, le chemin absolute vers le répertoire `data/pipeline`
+

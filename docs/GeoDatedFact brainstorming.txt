@@ -1,0 +1,59 @@
+
+ - La faculté donne aux fermiers un certificat (2014 à Ventiane)
+ - la faculté conseil sur le traitement à donner aux animaux
+ - gouvernement thailandais lance un recensment de la population humaine
+ - Gourvernement laosiens interdit la deforestation sous la recommendation de l'ONU qui a prouvé en 1984 la déforestation était la cause principale de réchauffement climatique.
+
+ 1)- collecter les différents rapports sur les parasites aux Laos
+ 2)- collecting Union va analyser ces rapports.
+
+ 1) gouvernmetn laosien interdit la déforestation en 2014
+ 2) déforestation est la cause principale du réchauffement climatique
+ 3) ONU recommande d'arrêter la déforestation
+
+
+Groupe (équipe)
+
+
+ - titre: 1
+ - domain: politic
+ - topics gouvernment, interdiction, déforestation, ONU, environment
+ - source:
+ - date 2014
+ - endroit Laos
+ - commentaire: sous pression de l'ONU
+ - pièces jointes
+
+- titre 2
+- topics: déforestation, réchauffement climatique
+- endroit: monde
+- date: 1984
+
+- titre 3
+- topics: ONU, recommandation, interdiction,  déforestation
+- date: 2013
+
+
+
+ titre: La faculté donne aux fermiers un certificat
+ theme: elevage
+ topics: faculté, certificat, fermier
+ date: 2014
+ endroit: Ventiane
+
+
+ titre: La faculté conseil sur le traitement à donner aux animaux
+ theme: elevage, education
+ topics: faculté, conseil, fermier
+ date: 2014
+ endroit: Ventiane
+
+titre: gouvernement a recencé 2000000 thailandais
+topics: gouvernmeent, recencement
+value: 2000000
+date: 1994
+endroit: endroit
+
+
+- titre: Margot a vacciné le betail du fermier
+- topics: vaccination, betail, elevage, santé animal

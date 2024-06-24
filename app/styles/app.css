@@ -1,0 +1,227 @@
+html, body {
+  margin: 0;
+}
+
+.widget-application-menu {
+    padding-top: 25px;
+}
+
+.widget-outlet.main-content {
+    background-color: #fff;
+    padding-top: 25px;
+    min-height: 500px;
+}
+
+
+.widget-application-menu .nav-pills > li.active > a,
+.widget-application-menu .nav-pills > li > a:hover {
+    color: #333;
+    background-color: #fff;
+    margin-right: -20px;
+    border-radius: 0;
+}
+
+
+.widget-model-navbar .navbar-default,
+.widget-collection-navbar .navbar-default {
+  background-color: #fff;
+  border-color: #fff;
+  border-radius: 0;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.widget-model-navbar .navbar-default .navbar-brand,
+.widget-collection-navbar .navbar-default .navbar-brand {
+  font-size: 42px;
+}
+
+.empty-placeholder {
+  padding: 20px;
+  text-align: center;
+}
+
+
+/*** table ***/
+
+.widget-model-display .table > tbody > tr > th,
+.widget-model-display .table > tbody > tr > td {
+    border: 0;
+    padding: 0;
+    padding-left: 15px;
+    width: 50%;
+}
+
+th {
+    text-align: right;
+}
+
+td: {
+    text-align: left;
+}
+
+/*** panel ***/
+
+.panel {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/************** Ceropath styles ****************/
+
+/*** app colors ***/
+.eureka-application {
+    background-color: #7A0329;
+}
+
+.panel .panel-heading {
+    background-color: #D8EAA8;
+}
+
+
+.widget-application-navbar .navbar.navbar-inverse {
+    background-color: #7A0329;
+    border-color: #7A0329;
+}
+
+.widget-application-navbar .navbar-inverse .navbar-brand  {
+    color: #D8EAA8;
+}
+
+.widget-model-navbar .navbar-default .navbar-brand {
+  color: #7A0329;
+}
+
+.widget-model-navbar .navbar-default .navbar-nav > li > a {
+  color: #7A0329;
+}
+
+
+.widget-application-menu {
+    background-color: #7A0329;
+}
+
+
+.widget-application-menu .nav-pills > li > a:hover {
+    background-color: #D8EAA8;
+    color: #7A0329;
+}
+
+
+.widget-application-menu a {
+    color: #D8EAA8;
+}
+
+.eureka-loading-spinner > div {
+  background-color: #7A0329;
+}
+
+/*** banner ***/
+
+.widget-application-navbar .banner-bottom {
+  background-color: #fff;
+  background-image: url('/assets/images/ceropath-banner.jpg');
+  background-repeat: no-repeat;
+  height: 218px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/**
+ *  Resources
+ *
+ */
+
+/****** taxonomy *******/
+
+.ceropath-taxonomy-description .panel {
+    border: 0;
+    box-shadow: none;
+}
+
+.ceropath-taxonomy-description textarea {
+    height: 1400px;
+}
+
+/***** site ******/
+
+.site-photos.widget-model-display .eureka-widget-property-file-attachment-display {
+   border: 0;
+   padding: 0;
+   margin: 0;
+}
+
+.site-photos.widget-model-form .eureka-widget-property-file-attachment-form {
+    border: 0;
+    padding: 0;
+}
+
+.site-map .panel {
+    margin-bottom: -1px;
+}
+
+/****** individual ******/
+
+.individual-trapping-map .panel {
+    margin-bottom: -1px;
+}
+
+/****** utils ****/
+
+.ceropath-cancel-save-btn .panel {
+    border: 0;
+    box-shadow: none;
+}
+
+.ceropath-cancel-save-btn .panel-body {
+    text-align: center;
+}
+
+/*** widget-alive-animals ***/
+.alive-animal-photo .panel {
+  border: none;
+  margin-bottom: 0;
+}
+
+.alive-animal-photo .panel .panel-body {
+  padding: 0;
+}
+
+.alive-animal-photo .masonry-grid .item {
+  padding: 0;
+}
+
+/****** gallery *****/
+.masonry-grid {
+  margin: 0 auto;
+}
+
+.masonry-grid .item {
+  padding: 10px;
+}
+
+/***** pipeline *****/
+.widget-pipeline {
+  min-height: 600px;
+}
+
+.pipeline-result {
+  margin-top: 20px;
+}
+
+.pipeline-result .bg-danger {
+  padding: 20px;
+}
+
+.phylogenetic-tree text:hover {
+  text-decoration: underline;
+}
+
+.phylogenetic-tree text {
+  cursor: pointer;
+  font-size: 15px !important;
+}
+
+.phylogenetic-tree polygon,
+.phylogenetic-tree circle[fill="lightgrey"] {
+  cursor: pointer;
+}

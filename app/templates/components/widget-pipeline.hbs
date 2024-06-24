@@ -1,0 +1,195 @@
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#tab-pipeline" aria-controls="home" role="tab" data-toggle="tab">Enter a sequence</a></li>
+  <li role="presentation"><a href="#tab-results" aria-controls="messages" role="tab" data-toggle="tab">Results</a></li>
+  <li role="presentation" class="pull-right"><a href="#tab-primers" aria-controls="profile" role="tab" data-toggle="tab">Primers used</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div style="margin-top:20px" role="tabpanel" class="tab-pane active" id="tab-pipeline">
+        <form>
+            <fieldset>
+                <legend>Choose the file containing a sequence (fasta format)...</legend>
+                    <div class="form-group">
+                        <label for="pipeline-file">Filename:</label>
+                        {{input
+                            id="pipeline-file"
+                            type="file"
+                            value=file
+                            name="file"
+                            onChange="fileChanged"}}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default" {{action 'fileReset'}}>
+                            reset
+                        </button>
+                        <button
+                            type="button"
+                            disabled="{{unless file 'disabled'}}"
+                            class="btn btn-primary"
+                            {{action 'fileSubmit'}}>
+                                submit
+                        </button>
+                    </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>... OR paste your sequence...</legend>
+                    <div class="form-group">
+                        <a href="#" {{action 'example'}}>paste an example</a>
+                        {{textarea class="form-control" value=sequence cols="80" rows="10"}}
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn btn-default" {{action 'sequenceReset'}}>
+                            reset
+                        </button>
+                        <button
+                            type="button"
+                            disabled="{{unless sequence 'disabled'}}"
+                            class="btn btn-primary"
+                            {{action 'sequenceSubmit'}}>
+                                submit
+                        </button>
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="tab-results">
+        <div class="pipeline-result">
+            {{#if isLoading}}
+                {{partial 'eureka-loading'}}
+            {{/if}}
+            {{#if error}}
+                <p> An error occured with the following message:</p>
+                <pre class="bg-danger">{{error}}</pre>
+                <p>Are you sure that your content is in fasta format ?</p>
+            {{/if}}
+            {{#if nwk}}
+                {{phylogenetic-tree
+                    nwk=nwk
+                    userIndividuals=userIndividualNames
+                    voucherBarcodings=voucherBarcodings}}
+            {{/if}}
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="tab-primers">
+
+        <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="text-align:center">primer</th>
+                    <th style="text-align:center">sequence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">batl5310</th>
+                    <td>CCTACTCRGCCATTTTACCTATG</td>
+                </tr>
+                <tr>
+                    <th scope="row">ber-fw</th>
+                    <td>CCATCCAACATCTCATCATG</td>
+                </tr>
+                <tr>
+                    <th scope="row">ber-rev</th>
+                    <td>GTCTTCAATGATTCCGGAG</td>
+                </tr>
+                <tr>
+                    <th scope="row">bfibr1</th>
+                    <td>ATTCACAACGGCATGTTCTTCAG</td>
+                </tr>
+                <tr>
+                    <th scope="row">bfibr2</th>
+                    <td>AANGKCCACCCCAGTAGTATCTG</td>
+                </tr>
+                <tr>
+                    <th scope="row">f-1043</th>
+                    <td>GGCCAACTAGCATCCATCAG</td>
+                </tr>
+                <tr>
+                    <th scope="row">ghr2-re</th>
+                    <td>GATTTTGTTCAGTTGGTCTGTGCTCAC</td>
+                </tr>
+                <tr>
+                    <th scope="row">ghr7-fw	</th>
+                    <td>AAGCTGATCTCTTGTGCCTTGACCAGAA</td>
+                </tr>
+                <tr>
+                    <th scope="row">ghr8-rev</th>
+                    <td>TTGGCATCTGACTCACAGAAGTAGG</td>
+                </tr>
+                <tr>
+                    <th scope="row">ghrexon10-fw</th>
+                    <td>GGRAARTTRGAGGAGGTGAACACMATCTT</td>
+                </tr>
+                <tr>
+                    <th scope="row">h15915</th>
+                    <td>TCTCCATTTCTGGTTTACAAGAC</td>
+                </tr>
+                <tr>
+                    <th scope="row">i1</th>
+                    <td>ATGGCCAAGGTCCTCTTGGATAACTACTGCTT</td>
+                </tr>
+                <tr>
+                    <th scope="row">i1-rattus</th>
+                    <td>ATTGAGCAGGCTATGAAGAG</td>
+                </tr>
+                <tr>
+                    <th scope="row">i2</th>
+                    <td>ATCCCCTATGTCATCTCCTACYTG</td>
+                </tr>
+                <tr>
+                    <th scope="row">i2-micromys</th>
+                    <td>GATCCCYTATGTCATCTCYTAC</td>
+                </tr>
+                <tr>
+                    <th scope="row">integ-f2</th>
+                    <td>YGGCCGGGACARCTCTG</td>
+                </tr>
+                <tr>
+                    <th scope="row">integ-r-univ</th>
+                    <td>ATCCTCCACCTGCCGCACTT</td>
+                </tr>
+                <tr>
+                    <th scope="row">j1</th>
+                    <td>CGCAGGTCCATGATGAGGTGCTCCGTGTCCTG</td>
+                </tr>
+                <tr>
+                    <th scope="row">j2</th>
+                    <td>CCACTGCCCTCCCATGTCTG</td>
+                </tr>
+                <tr>
+                    <th scope="row">j2-rattus</th>
+                    <td>TAGGGCTTGCTCYGCAGG</td>
+                </tr>
+                <tr>
+                    <th scope="row">l14723</th>
+                    <td>ACCAATGACATGAAAAATCATCGTT</td>
+                </tr>
+                <tr>
+                    <th scope="row">leo-fw</th>
+                    <td>CTCTCTTCTAGGCGTCGT</td>
+                </tr>
+                <tr>
+                    <th scope="row">leo-rev</th>
+                    <td>GAGGCTAGTTGACCGATG</td>
+                </tr>
+                <tr>
+                    <th scope="row">r-15945</th>
+                    <td>GACGGCTATGTTGAGGAAGG</td>
+                </tr>
+                <tr>
+                    <th scope="row">r6036r</th>
+                    <td>ACTTCTGGGTGTCCAAAGAATCA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
