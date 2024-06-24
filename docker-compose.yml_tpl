@@ -1,0 +1,26 @@
+# web server
+web:
+    # the build image from `eureka
+    image: namlook/ceropath:<version_to_use> dockerize`
+    links:
+        - db
+    ports:
+        - "80:80"
+    environment:
+        NODE_ENV: production
+    restart: always
+    privileged: true
+    volumes:
+        - /<path/to/data/in/the/server:/app/uploads
+db:
+    image: tenforce/virtuoso:virtuoso-v7.2.0
+    ports:
+        - "8890:8890"
+        - "1111:1111"
+    environment:
+        DBA_PASSWORD: <the dba password>
+        SPARQL_UPDATE: true
+    restart: always
+    privileged: true
+    volumes:
+        - /path/to/virtuoso/db/on/the/server:/var/lib/virtuoso/db
